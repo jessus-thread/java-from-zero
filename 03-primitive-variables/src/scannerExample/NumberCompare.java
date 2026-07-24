@@ -4,20 +4,30 @@ import java.util.Scanner;
 
 public class NumberCompare {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter the first number: ");
 
-        int a = sc.nextInt();
+        int firstNumber = scanner.nextInt();
 
         System.out.println("Enter the second number: ");
 
-        int b = sc.nextInt();
+        int secondNumber = scanner.nextInt();
 
-        System.out.println("Value of a: " + a);
-        System.out.println("Value of b: " + b);
-        System.out.println("The sum of a + b: " + (a + b));
+        int sum = firstNumber + secondNumber;
+        int difference = firstNumber - secondNumber;
 
-        sc.close();
+        System.out.println("The sum of a + b: " + sum);
+        System.out.println("The subtraction of a - b: " + difference);
+
+        if (firstNumber > secondNumber) {
+            System.out.println("The first number is greater");
+        } else {
+            System.out.println("The second number is greater than or equal to.");
+        }
+
+        System.out.println("End of the app");
+
+        scanner.close();
     }
 }
