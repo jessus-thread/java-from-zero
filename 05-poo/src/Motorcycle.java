@@ -12,6 +12,11 @@ public class Motorcycle extends Vehicle {
     }
 
     @Override
+    public void start() {
+        System.out.println("the motorcycle is starting... override");
+    }
+
+    @Override
     public String toString() {
         return "Motorcycle{" +
                 "hasSidecar=" + hasSidecar +

@@ -18,6 +18,15 @@ public class Car extends  Vehicle{
         this.doors = doors;
     }
 
+    /*
+        El segundo tipo de polimorfismo que es en tiempos de ejecución
+        se llama sobreescritura de metodos.
+     */
+    @Override
+    public void start() {
+        System.out.println("The car is start - override");
+    }
+
     public int getDoors() {
         return doors;
     }

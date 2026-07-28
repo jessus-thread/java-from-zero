@@ -7,5 +7,11 @@ public class Main {
         vehicle.setYear(2018);
 
         System.out.println(vehicle.toString());
+
+        Car myCar = new Car("Toyota", "Corolla", 2021, 4);
+        Motorcycle motorcycle = new Motorcycle("Honda", "CBR", 2021, false);
+
+        myCar.start();
+        motorcycle.start();
     }
 }
