@@ -34,4 +34,11 @@ public class Car extends  Vehicle{
     public void setDoors(int doors) {
         this.doors = doors;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "doors=" + doors +
+                '}' + super.toString();
+    }
 }

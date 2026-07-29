@@ -8,10 +8,31 @@ public class Main {
 
         System.out.println(vehicle.toString());
 
-        Car myCar = new Car("Toyota", "Corolla", 2021, 4);
-        Motorcycle motorcycle = new Motorcycle("Honda", "CBR", 2021, false);
+        /*
+            El polimorfismo de inclusion se basa en tipar a las clases hijas
+            como clases de la super clase
+         */
+        Vehicle myCar = new Car("Toyota", "Corolla", 2021, 4);
+        Vehicle motorcycle = new Motorcycle("Honda", "CBR", 2021, false);
 
         myCar.start();
         motorcycle.start();
+
+        printVehicle(myCar);
+
+        /*
+            Castemos para poder acceder a los setters creados en la clase Car
+         */
+        ((Car)myCar).setDoors(5);
+
+        printVehicle(myCar);
+    }
+
+    /*
+        Polimorfismo de inclusion, logramos que nuestro codigo sea mas flexible,
+        ya que ambos son vehiculos
+     */
+    public static void printVehicle(Vehicle vehicle) {
+        System.out.println(vehicle.toString());
     }
 }
