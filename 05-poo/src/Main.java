@@ -15,8 +15,13 @@ public class Main {
         Vehicle myCar = new Car("Toyota", "Corolla", 2021, 4);
         Vehicle motorcycle = new Motorcycle("Honda", "CBR", 2021, false);
 
-        myCar.start();
-        motorcycle.start();
+        /*
+            Casteamos los objetos myCar para poder usar los metodos start(),
+            no cambiamos el tipo de dato directamente en la variable ya que
+            metodologicamente es incorrecto
+         */
+        ((Car)myCar).start();
+        ((Motorcycle)motorcycle).start();
 
         printVehicle(myCar);
 
