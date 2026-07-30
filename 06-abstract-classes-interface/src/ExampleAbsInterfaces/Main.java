@@ -9,13 +9,18 @@ public class Main {
             en una sola linea, generalmente para sobreescribir metodos de
             una interfaz o clase abstracta
          */
-        Vehicle vehicle = new Vehicle("Fiat", "Duna", 2000) {
-            @Override
-            public void drive() {
-                System.out.println("Driving Vehicle");
-            }
-        };
+//        Vehicle vehicle = new Vehicle("Fiat", "Duna", 2000) {
+//            @Override
+//            public void drive() {
+//                System.out.println("Driving Vehicle");
+//            }
+//        };
+//
+//        System.out.println(vehicle.toString());
 
-        System.out.println(vehicle.toString());
+        Vehicle electric =
+                new ElectricCar("Fiat", "Duna", 2025, Color.BLUE, VehicleStatus.AVAILABLE, 80);
+
+        System.out.println(electric.toString());
     }
 }

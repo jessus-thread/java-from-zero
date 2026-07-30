@@ -13,14 +13,18 @@ public class ElectricCar extends Vehicle implements Electric, SelfDriving {
 
     public ElectricCar(String brand, String model, int year, int batteryLevel) {
         super(brand, model, year);
+        this.batteryLevel = batteryLevel;
+    }
 
+    public ElectricCar(String brand, String model, int year, Color color, VehicleStatus vehicleStatus, int batteryLevel) {
+        super(brand, model, year, color, vehicleStatus);
         this.batteryLevel = batteryLevel;
     }
 
     /*
-            Sobreescribimos el metodo que declaramos como abstract
-            en la clase abstracta
-         */
+        Sobreescribimos el metodo que declaramos como abstract
+        en la clase abstracta
+     */
     @Override
     public void drive() {
         System.out.println("El auto eléctrico está en marcha");
@@ -36,5 +40,12 @@ public class ElectricCar extends Vehicle implements Electric, SelfDriving {
     @Override
     public void activateAutopilot() {
         System.out.println("Modo piloto automático activado");
+    }
+
+    @Override
+    public String toString() {
+        return "ElectricCar{" +
+                "batteryLevel=" + batteryLevel +
+                '}' + super.toString();
     }
 }

@@ -25,11 +25,22 @@ public abstract class Vehicle {
     private String brand;
     private String model;
     private int year;
+    // De esta forma usan los enums
+    private Color color;
+    private VehicleStatus vehicleStatus;
 
     public Vehicle(String brand, String model, int year) {
         this.brand = brand;
         this.model = model;
         this.year = year;
+    }
+
+    public Vehicle(String brand, String model, int year, Color color, VehicleStatus vehicleStatus) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.color = color;
+        this.vehicleStatus = vehicleStatus;
     }
 
     public String getBrand() {
@@ -76,6 +87,8 @@ public abstract class Vehicle {
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", year=" + year +
+                ", color=" + color +
+                ", vehicleStatus=" + vehicleStatus +
                 '}';
     }
 }
