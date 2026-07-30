@@ -6,6 +6,10 @@ public class Main {
             Arreglo de numeros enteros, este arreglo es estatico,
             es decir, una vez creada la variable no se podran añadir mas
             datos.
+
+            Es importante saber que los arreglos estaticos al ser de
+            longitud fija son mas rapidos que los arreglos dinamicos ya que
+            los arrays fijos no estan sobrecargados con metodos
          */
         Integer[] numbers = { 1, 2, 3, 4, 5 };
 
@@ -50,6 +54,71 @@ public class Main {
 
         for (Integer num : numbers2) {
             System.out.println("ArrayList: " + num);
+        }
+
+        int[] numbersPrimitive = new int[5];
+        // Los valores por defecto son null
+        Integer[] numbersWrapper = new Integer[5];
+
+        /*
+            En los arreglos con primitivos no podemos almacenar null
+            mientras que en los de wrappers si
+         */
+        numbersPrimitive[0] = 5;
+        numbersWrapper[4] = 50;
+
+        // Este tipo de for se llama forEch
+        for (Integer num : numbersWrapper) {
+            // Al ser Wrappers podemos acceder a sus metodos
+            if (num != null) {
+                System.out.println(num.toString());
+
+                continue;
+            }
+
+            System.out.println("Es null");
+        }
+
+        System.out.println("-------------------------------------------------");
+
+        /*
+            Un tema a considerar es que si necesitamos rendimiento y no necesitamos
+            trabajar con métodos el tipo de arreglo con datos pŕimitivos es el corecto,
+            pero, si necesitamos trabajar con null y con metodos el arreglo con wrappers
+            es el correcto
+        */
+
+        /*
+            Como bien sabemos los arreglos estaticos no se pueden aumentar el tamaño
+            de manera dinamica, pero tenemos una solucion y es la siguiente
+         */
+        int[] numberOriginal = new int[5];
+
+        numberOriginal[0] = 20;
+        numberOriginal[4] = 29;
+
+        /*
+            La solucion es crear un nuevo arreglo y entre los corchetes
+            ponemos la longitud del arreglo original mas la cantidad
+            que deseamos aumentar
+         */
+        int[] newNumbers = new int[numberOriginal.length + 1];
+
+        /*
+            Este método nos permite copiar un arreglo a otro arreglo
+
+            1. El primer metodo es el arreglo que vamos a copiar
+            2. Desde que pocision se empezaran a copiar del arreglo original
+            3. Es el arreglo destino donde se copiaran los elementos
+            4. Desde que pocision se empezaran a guardar en el nuevo arreglo
+            5. la longitud del arreglo que se va a copiar
+         */
+        System.arraycopy(numberOriginal, 0, newNumbers, 0, numberOriginal.length);
+
+        newNumbers[5] = 500;
+
+        for (int num : newNumbers) {
+            System.out.println(num);
         }
     }
 }
