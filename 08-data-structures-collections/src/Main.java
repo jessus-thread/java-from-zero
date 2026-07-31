@@ -120,5 +120,27 @@ public class Main {
         for (int num : newNumbers) {
             System.out.println(num);
         }
+
+        System.out.println("--------------------------------");
+
+        int[] numbersRandoms = {1, 2, 3, 4, 5, 9, 0};
+        final int deletePosition = 2;
+
+        /*
+            Recorremos los elementos hacia una pocision anterior
+            para eliminar el numbero 3
+         */
+        for (int i = deletePosition; i < numbersRandoms.length - 1; i++) {
+            numbersRandoms[i] = numbersRandoms[ i + 1];
+        }
+
+        numbersRandoms[numbersRandoms.length - 1] = 0;
+
+        numbersRandoms[0] = 200;
+
+        for (int number : numbersRandoms) {
+            System.out.println(number);
+        }
+
     }
 }
