@@ -1,4 +1,4 @@
-package com.devtalles.datastructure.list.equals;
+package com.devtalles.datastructure.equals;
 
 public class ExampleEquals {
     static void main(String[] args) {

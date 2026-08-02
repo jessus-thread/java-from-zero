@@ -1,6 +1,5 @@
-package com.devtalles.datastructure.list.LinkedHashSet;
+package com.devtalles.datastructure.set.LinkedHashSet;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;

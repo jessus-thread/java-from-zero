@@ -1,4 +1,4 @@
-package com.devtalles.datastructure.list.hashset;
+package com.devtalles.datastructure.set.hashset;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package com.devtalles.datastructure.list.equals;
+package com.devtalles.datastructure.equals;
 
 import java.util.Objects;
 
