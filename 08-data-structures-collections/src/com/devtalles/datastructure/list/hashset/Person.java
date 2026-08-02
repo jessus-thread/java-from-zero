@@ -15,6 +15,8 @@ public class Person {
 
     @Override
     public boolean equals(Object o) {
+        // Compara si estamos mandando el mismo objeto
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Person person = (Person) o;
@@ -41,6 +43,14 @@ public class Person {
         return Objects.hashCode(dni);
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", dni='" + dni + '\'' +
+                '}';
+    }
+
     static void main(String[] args) {
         Set<Person> persons = new HashSet<>();
         Person person1 = new Person("Jessus", "12345");
@@ -54,13 +64,35 @@ public class Person {
          */
         Person person4 = new Person("Jessus - Diferente", "12345");
 
+        // Create
         persons.add(person1);
         persons.add(person2);
         persons.add(person3);
         persons.add(person4);
 
+        /*
+            Añadiendo el metodo toString podemos ver el arreglo en si con sus
+            valores sin iterar el arreglo
+         */
+        System.out.println(persons); // read or list
+
         for (Person person : persons) {
             if (person != null) System.out.println(person.name);
         }
+
+        // delete
+        persons.remove(person1);
+
+        System.out.println(persons);
+
+        /*
+            Update
+
+            No existe un metodo update en si, para actualizar
+            necesitamos eliminar y luego agregar
+         */
+        persons.add(person1);
+
+        System.out.println(persons);
     }
 }
