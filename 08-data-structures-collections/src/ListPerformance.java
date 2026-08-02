@@ -29,7 +29,7 @@ public class ListPerformance {
         }
 
         end = System.nanoTime();
-        
+
         System.out.println("LinkedList insertion time: " + (end - start) + " ns");
 
         // Acceder a elementos
