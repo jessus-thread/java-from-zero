@@ -3,18 +3,16 @@ import java.util.ArrayList;
 public class ExamplesArrays {
     public static void main(String[] args) {
         /*
-            Arreglo de numeros enteros, este arreglo es estatico,
-            es decir, una vez creada la variable no se podran añadir mas
-            datos.
+            Arreglo de números enteros (Wrapper). Este arreglo es estático,
+            es decir, una vez instanciado en memoria, su longitud es inmutable.
 
-            Es importante saber que los arreglos estaticos al ser de
-            longitud fija son mas rapidos que los arreglos dinamicos ya que
-            los arrays fijos no estan sobrecargados con metodos
+            Rendimiento: Los arreglos estáticos no tienen la sobrecarga de
+            los métodos de una clase como ArrayList. Son el acceso más directo
+            a la memoria RAM que permite Java.
          */
-
         Integer[] numbers = { 1, 2, 3, 4, 5 };
 
-        // Mpodificar un valor por pocision en especifico
+        // Modificar un valor por posición en específico: O(1)
         numbers[0] = 1000;
 
         for (Integer num : numbers) {
@@ -24,96 +22,89 @@ public class ExamplesArrays {
         System.out.println("--------------------------");
 
         /*
-            De esta manera reservamos un espacio de 1000 elementos
-            si escribir todos de manera implicita.
+            Reservamos un bloque contiguo en memoria para 100 elementos.
 
-            El valor por defecto de cada pocision es 0
+            Nota técnica: Al ser un arreglo de primitivos (int), el valor por
+            defecto de cada posición se inicializa automáticamente en 0 a nivel
+            de bytes. No hay valores null aquí.
 
-            La palabra reservada new sirve para crear objetos pero tambien
-            es para rervar espacios en memoria en el caso de los arreglos.
-
-            Estos numeros enteros son tratados en memoria como objetos pero
-            en el sistema son tratados como enteros primitivos
+            La palabra reservada 'new' indica que el arreglo en sí mismo es un
+            objeto para la Máquina Virtual de Java (JVM), aunque su contenido
+            sean datos primitivos puros.
          */
-
         int[] fixedArray = new int[100];
 
         for (int number : fixedArray) {
             System.out.println(number);
         }
 
-        System.out.println("Dimensión: " + fixedArray.length );
+        // length no es un método (no lleva paréntesis), es un atributo final (constante) del arreglo.
+        System.out.println("Dimensión: " + fixedArray.length);
 
         /*
-            Estructura de datos dinamicas
+            Estructuras de datos dinámicas (Java Collections Framework)
 
-            Cuando trabajamos con estructuras dinamicas debemos trabajar con objetos
+            Para usar genéricos (<>) y colecciones dinámicas, Java nos obliga
+            a usar Clases Wrapper (Integer) porque el JFC trabaja exclusivamente
+            con Referencias a Objetos, no con primitivos.
          */
         ArrayList<Integer> numbers2 = new ArrayList<>();
-
-        // añadir datos al array
         numbers2.add(30);
 
         for (Integer num : numbers2) {
             System.out.println("ArrayList: " + num);
         }
 
+        System.out.println("--------------------------");
+
+        // Primitivos: Memoria pura, valor por defecto = 0
         int[] numbersPrimitive = new int[5];
-        // Los valores por defecto son null
+
+        // Wrappers: Referencias a objetos, valor por defecto = null
         Integer[] numbersWrapper = new Integer[5];
 
         /*
-            En los arreglos con primitivos no podemos almacenar null
-            mientras que en los de wrappers si
+            Regla de Arquitectura:
+            - Usamos primitivos (int[]) cuando necesitamos máximo rendimiento,
+              cálculos matemáticos puros y no nos importa el estado "ausente".
+            - Usamos Wrappers (Integer[]) o Colecciones cuando necesitamos
+              representar la ausencia de valor (null), interactuar con APIs,
+              o utilizar métodos utilitarios (.toString(), .parseInt()).
          */
         numbersPrimitive[0] = 5;
         numbersWrapper[4] = 50;
 
-        // Este tipo de for se llama forEch
+        // Bucle For-Each (Sintaxis mejorada para iteradores)
         for (Integer num : numbersWrapper) {
-            // Al ser Wrappers podemos acceder a sus metodos
+            // Protección contra NullPointerException (NPE)
             if (num != null) {
                 System.out.println(num.toString());
-
                 continue;
             }
-
             System.out.println("Es null");
         }
 
         System.out.println("-------------------------------------------------");
 
         /*
-            Un tema a considerar es que si necesitamos rendimiento y no necesitamos
-            trabajar con métodos el tipo de arreglo con datos pŕimitivos es el corecto,
-            pero, si necesitamos trabajar con null y con metodos el arreglo con wrappers
-            es el correcto
-        */
-
-        /*
-            Como bien sabemos los arreglos estaticos no se pueden aumentar el tamaño
-            de manera dinamica, pero tenemos una solucion y es la siguiente
+            REDIMENSIONAMIENTO MANUAL: La magia detrás de ArrayList
+            Como los arreglos son inmutables en tamaño, la única forma de
+            "crecer" es crear un arreglo nuevo y copiar los datos.
          */
         int[] numberOriginal = new int[5];
-
         numberOriginal[0] = 20;
         numberOriginal[4] = 29;
 
-        /*
-            La solucion es crear un nuevo arreglo y entre los corchetes
-            ponemos la longitud del arreglo original mas la cantidad
-            que deseamos aumentar
-         */
+        // 1. Creamos un nuevo espacio de memoria con la capacidad ampliada.
         int[] newNumbers = new int[numberOriginal.length + 1];
 
         /*
-            Este método nos permite copiar un arreglo a otro arreglo
+            2. System.arraycopy(): O(n)
+            Este método es extremadamente rápido porque no itera elemento por elemento
+            en Java. Es un método "nativo" (escrito en C/C++) que le dice al Sistema
+            Operativo que copie un bloque de memoria RAM directamente a otra dirección.
 
-            1. El primer metodo es el arreglo que vamos a copiar
-            2. Desde que pocision se empezaran a copiar del arreglo original
-            3. Es el arreglo destino donde se copiaran los elementos
-            4. Desde que pocision se empezaran a guardar en el nuevo arreglo
-            5. la longitud del arreglo que se va a copiar
+            Parámetros: (origen, posOrigen, destino, posDestino, cantidadDeElementos)
          */
         System.arraycopy(numberOriginal, 0, newNumbers, 0, numberOriginal.length);
 
@@ -125,19 +116,25 @@ public class ExamplesArrays {
 
         System.out.println("--------------------------------");
 
+        /*
+            ELIMINACIÓN MANUAL: Desplazamiento de bits (Shift)
+            Esta es la recreación exacta de por qué ArrayList.remove() es O(n).
+         */
         int[] numbersRandoms = {1, 2, 3, 4, 5, 9, 0};
-        final int deletePosition = 2;
+        final int deletePosition = 2; // Queremos borrar el '3'
 
         /*
-            Recorremos los elementos hacia una pocision anterior
-            para eliminar el numbero 3
+            Iteramos desde la posición a borrar, y movemos todos los elementos
+            de la derecha un espacio hacia la izquierda. Tapamos el hueco.
          */
         for (int i = deletePosition; i < numbersRandoms.length - 1; i++) {
-            numbersRandoms[i] = numbersRandoms[ i + 1];
+            numbersRandoms[i] = numbersRandoms[i + 1];
         }
 
+        // Limpiamos la última posición sobrante (opcional, pero buena práctica)
         numbersRandoms[numbersRandoms.length - 1] = 0;
 
+        // Modificación extra
         numbersRandoms[0] = 200;
 
         for (int number : numbersRandoms) {
