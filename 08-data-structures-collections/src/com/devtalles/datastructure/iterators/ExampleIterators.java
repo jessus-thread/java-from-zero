@@ -43,6 +43,8 @@ public class ExampleIterators {
                     que el iterador se entere de la modificacion, es
                     importante no usar la colección para modificarla
                     directamente por que es una mala practica.
+
+                    Solo podemos remover mas no añadir
                  */
                 iterator.remove();
             }
