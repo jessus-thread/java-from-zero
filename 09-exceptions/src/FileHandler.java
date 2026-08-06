@@ -16,7 +16,11 @@ public class FileHandler {
         System.out.println("El programa finaliza");
     }
 
-    // Solucion de catch mas simple
+    /*
+        Solucion de catch mas simple, es comun ver que las excepciones
+        son lanzadas a una jerarquia superior, es decir, que el padre
+        que lo consume maneje ese error.
+     */
     public static void readFile(String path) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(path));
 
