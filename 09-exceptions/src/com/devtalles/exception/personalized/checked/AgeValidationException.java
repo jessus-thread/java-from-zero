@@ -1,4 +1,4 @@
-package com.devtalles.exception.personalized;
+package com.devtalles.exception.personalized.checked;
 
 /*
     Extendemos de Exception por que es de tipo CheckedException, es decir,
