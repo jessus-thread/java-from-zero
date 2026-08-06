@@ -5,34 +5,23 @@ import java.io.IOException;
 
 public class FileHandler {
     static void main() {
-        readFile("src/example1.txt");
+        try {
+            readFile("src/example1.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no existe");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("El programa finaliza");
     }
 
-    public static void readFile(String path) {
-        BufferedReader reader = null;
+    // Solucion de catch mas simple
+    public static void readFile(String path) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(path));
 
-        try {
-            reader = new BufferedReader(new FileReader(path));
+        System.out.println("El archivo fue abierto con exito");
 
-            String line;
-
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-        } catch (FileNotFoundException error) {
-            System.out.println("El archivo no existe: " + path);
-        } catch(IOException error) {
-            System.out.println("Error en la lectura del archivo...");
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-
-                    System.out.println("Archivo cerrado.");
-                }
-            } catch (IOException error) {
-                System.out.println("Error al intentar cerrar el archivo.");
-            }
-        }
+        reader.close();
     }
 }
