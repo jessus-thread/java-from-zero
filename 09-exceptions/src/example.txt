@@ -1,1 +1,9 @@
-Hola soy Jessus, futuro Back-End Dev
+Throwable
+    |
+    |-- Exception (CheckedException)
+    |        |-- IOException
+    |        |      | -- FileNotFoundException
+    |
+    |-- RuntimeException (UncheckedException)
+          |-- NullPointerException
+          |-- ArithmeticException
