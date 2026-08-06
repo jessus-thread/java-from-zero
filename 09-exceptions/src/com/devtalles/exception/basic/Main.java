@@ -28,15 +28,34 @@ public class Main {
          */
 
         try {
-            int result = 10 / 2;
+            int result = 10 / 0;
 
             System.out.println(result);
         } catch (ArithmeticException e) {
             // Se puede multiples catch
-            System.out.println("Division by zero");
+//            System.out.println("Division by zero");
+//            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         } finally {
             System.out.println("Siempre se ejecuta");
         }
+
+        try {
+            int[] numbers = new int[3];
+
+            System.out.println(numbers[5]);
+        } catch (ArrayIndexOutOfBoundsException error) {
+            StackTraceElement[] stack = error.getStackTrace();
+
+            for (StackTraceElement element : stack) {
+                System.out.println("Clase donde se produce el error: " + element.getClassName());
+                System.out.println("Método: " + element.getMethodName());
+                System.out.println("Archivo: " + element.getFileName());
+                System.out.println("Linea: " + element.getLineNumber());
+            }
+        }
+
+
 
 //        recursive();
         System.out.println("El programa finaliza");
