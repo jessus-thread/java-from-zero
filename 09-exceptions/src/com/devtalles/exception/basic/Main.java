@@ -1,3 +1,5 @@
+package com.devtalles.exception.basic;
+
 public class Main {
     // La recursividad es una especie de bucle
     public static void recursive() {
