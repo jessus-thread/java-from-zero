@@ -1,5 +1,11 @@
-package com.devtalles.exception.proyect;
+package com.devtalles.exception.proyect.ui;
 
+import com.devtalles.exception.proyect.domain.Student;
+import com.devtalles.exception.proyect.exception.DuplicateStudentException;
+import com.devtalles.exception.proyect.exception.StudentNotFoundException;
+import com.devtalles.exception.proyect.service.StudentService;
+
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,19 +19,25 @@ public class StudentApp {
     }
 
     public void start() {
-        int option;
+        int option = 0;
 
         do {
-            this.displayMenu();
-
-            option = this.getUserOptions();
-
             try {
+                this.displayMenu();
+
+                option = this.getUserOptions();
+
                 this.processOption(option);
-            } catch (StudentNotFoundException | DuplicateStudentException error) {
+            } catch (
+                    DuplicateStudentException |
+                    StudentNotFoundException |
+                    IllegalArgumentException |
+                    InputMismatchException error
+            ) {
                 System.out.println(error.getMessage());
 
-                this.start();
+                System.out.println();
+                System.out.println("------------------------------------------------------------------------------");
             }
         } while (option != 4);
     }
@@ -36,12 +48,16 @@ public class StudentApp {
         String id = this.createInputString("ID: ");
 
         this.service.save(new Student(name, age, id));
+
+        System.out.println("Usuario guardado correctamente...");
     }
 
     private void handleDelete() {
         String id = this.createInputString("Eliminar estudiante: ");
 
         this.service.deleteById(id);
+
+        System.out.println("Usuario eliminado correctamente...");
     }
 
     private void handleRenderListStudents() {
@@ -74,28 +90,36 @@ public class StudentApp {
 
                 break;
             }
-            case 5: {
+            default: {
                 System.out.println("Opción incorrecta");
             }
         }
     }
 
     private int getUserOptions() {
-        System.out.println("Seleccione una opción:");
+        try  {
+            System.out.println("Seleccione una opción:");
 
-        return this.scanner.nextInt();
+            return Integer.parseInt(this.scanner.nextLine());
+        } catch (Exception error) {
+            throw new InputMismatchException("Por favor, coloque un número valido.");
+        }
     }
 
     private String createInputString(String label) {
         System.out.println(label);
 
-        return this.scanner.next();
+        return this.scanner.nextLine();
     }
 
     private byte createInputByte(String label) {
-        System.out.println(label);
+        try {
+            System.out.println(label);
 
-        return this.scanner.nextByte();
+            return Byte.parseByte(this.scanner.nextLine());
+        } catch (InputMismatchException error) {
+            throw new InputMismatchException("Por favor, coloque un número valido.");
+        }
     }
 
     private void displayMenu() {

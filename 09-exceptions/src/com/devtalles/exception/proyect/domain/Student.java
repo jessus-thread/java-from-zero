@@ -1,4 +1,4 @@
-package com.devtalles.exception.proyect;
+package com.devtalles.exception.proyect.domain;
 
 import java.util.Objects;
 
@@ -43,12 +43,6 @@ public class Student implements Comparable<Student> {
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        Student.isValidIdentifierOrThrow(id);
-
-        this.id = id;
     }
 
     @Override

@@ -1,11 +1,13 @@
-package com.devtalles.exception.proyect;
+package com.devtalles.exception.proyect.repository;
+
+import com.devtalles.exception.proyect.domain.Student;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StudentMemoryRepository implements StudentRepository{
+public class StudentMemoryRepository implements StudentRepository {
     private Map<String, Student> students = new HashMap<>();
 
     @Override

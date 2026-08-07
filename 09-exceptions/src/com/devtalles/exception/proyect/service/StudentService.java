@@ -1,4 +1,9 @@
-package com.devtalles.exception.proyect;
+package com.devtalles.exception.proyect.service;
+
+import com.devtalles.exception.proyect.exception.DuplicateStudentException;
+import com.devtalles.exception.proyect.exception.StudentNotFoundException;
+import com.devtalles.exception.proyect.domain.Student;
+import com.devtalles.exception.proyect.repository.StudentRepository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.devtalles.exception.proyect;
+package com.devtalles.exception.proyect.exception;
 
 public class DuplicateStudentException extends RuntimeException {
     public DuplicateStudentException(String message) {

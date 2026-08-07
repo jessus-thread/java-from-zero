@@ -1,4 +1,6 @@
-package com.devtalles.exception.proyect;
+package com.devtalles.exception.proyect.repository;
+
+import com.devtalles.exception.proyect.domain.Student;
 
 import java.util.List;
 
