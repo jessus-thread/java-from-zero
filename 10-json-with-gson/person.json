@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Jessus",
+    "age": 30,
+    "student": true,
+    "email": "jessus@devtalles.com",
+    "noExiste": false,
+    "hobbies": [
+      "Estudiar",
+      "Programar",
+      "Leer",
+      "Hablar"
+    ]
+  },
+  {
+    "name": "Fernando",
+    "email": "fernando@devtalles.com",
+    "age": 28,
+    "student": false,
+    "hobbies": [
+      "Correr",
+      "Futbol",
+      "Leer",
+      "Hablar"
+    ]
+  }
+]

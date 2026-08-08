@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "items":  {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 50
+      },
+      "age": { "type": "integer", "minimum": 0 },
+      "student": { "type": "boolean" },
+      "email": { "type": "string", "format": "email" },
+      "hobbies": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    }
+  },
+  "required": ["name", "age", "email", "student", "hobbies"]
+}
