@@ -2,8 +2,15 @@ package BlockStatic;
 
 public class BlockExample {
     /*
-        Un bloque estatico se ejecute una sola vez antes de que se inicializen
-        las propiedades, antes de que se ejecute el metodo main.
+        What exactly is a static block?
+
+        It is a block of pure code that is automatically and uniquely executed
+        at the exact moment that the ClassLoader (the Java Virtual Machine class
+        loader) uploads your class to RAM (to the Metaspace), long before the
+        first object is created
+
+        A static block is executed only once before the properties are
+        initialized, before the main method is executed.
      */
     static {
         System.out.println("Block static execute...");
