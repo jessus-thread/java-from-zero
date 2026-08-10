@@ -1,14 +1,23 @@
 package AttributeStatic;
 
 public class Classroom {
-    private String studentName; // Atributo de instancia
+    private String studentName; // Instance attribute
 
-    /*
-     * Los atributos estáticos pertenecen a la clase y no a los objetos creados a partir de ella.
-     * Por eso, todas las instancias comparten el mismo valor de estos atributos y solo existe
-     * una copia de ellos en toda la clase.
-     */
-    private static String schoolName = "School Technical Number 1"; // Atributo de clase
+   /*
+        Static attributes belong to the class and not to the object created
+        from it. Therefore, all instances share the same value of these
+        attributes and there is only one copy of them in the entire class.
+
+        When you use the word "new", Java goes to a memory space called
+        "Heap" and builds a new House (an object) based on your blueprint
+        (the class)
+
+        Design Patterns (Singleton): when you need to ensure that only a
+        single connection to your database (for example, to MongoDB) exists
+        in the entire application, you save that connection in a static
+        variable
+    */
+    private static String schoolName = "School Technical Number 1"; // class attribute
 
     public Classroom(String studentName) {
         this.studentName = studentName;
