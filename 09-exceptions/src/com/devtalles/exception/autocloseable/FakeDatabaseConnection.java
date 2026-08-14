@@ -1,22 +1,38 @@
 package com.devtalles.exception.autocloseable;
 
 /*
-    La interfaz AutoCloseable permite que cualquier clase
-    que la implemente pueda usarse con el try-with-resources
-    y nos obliga a implementar el metodo close que cierra
-    los recursos abiertos
+    The AutoCloseable interface allows any class that implements
+    it to be used with try-with-resources and requires us to implement
+    the close method, which closes open resources.
+
+    AutoCloseable is designed for instances: Java interfaces define
+    behaviors for objects created using `new`. Internally, the
+    try-with-resources block effectively says: "Create this object,
+    use it within this block, and when finished, call its `close`
+    method"
+
+    When should you use AutoCloseable?
+
+    Reserve the use of try-with-resource and AutoCloseable for
+    very short-lived resources within a specific method. For
+    example
+
+    - Reading a file from the hard drive (FileReader)
+    - Processing a data stream (InputStream)
+    - Reading the response from an external HTTP request
+        made by your code.
 */
 public class FakeDatabaseConnection implements AutoCloseable {
     public FakeDatabaseConnection() {
-        System.out.println("Conexión a la base de datos establecida");
+        System.out.println("Database connection established");
     }
 
     public void fetchData() {
-        System.out.println("Obteniendo información de la base de datos.");
+        System.out.println("Retrieving information from the database");
     }
 
     @Override
     public void close() throws Exception {
-        System.out.println("Conexión cerrada correctamente.");
+        System.out.println("Connection closed successfully");
     }
 }
