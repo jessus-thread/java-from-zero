@@ -15,37 +15,38 @@ public class ExampleIterators {
         names.add("Jesús");
         names.add("Carlos");
 
-        /*
-            Un forEach internamente usa un iterador, esto lanza un error
-            por que el iterador no esta pendiente de las modificaciones
-            y en la segunda vuelta detecta la modificacion inesperada
-            y lanza el error.
+       /*
+            A forEach internally uses an iterator, which throws an error
+            because the iterator is unaware of modifications, and on the
+            second iteration it detects the unexpected modification and
+            throws the error.
 
-            Es importante saber que el forEach no soporta modificaciones
-            mientras recorre la coleccion y es una mala practica intentar
-            hacerlo
-         */
+            It is important to know that forEach does not support modifications
+            while traversing the collection, and it is a bad practice to try
+            to do so.
+        */
+
 //        for (String name : names) {
 //            if (name.startsWith("A") || name.startsWith("C")) {
 //                names.remove(name);
 //            }
 //        }
 
-        // Solución al problema anterior es usar directamente un iterador
+        // The solution to the previous problem is to use an iterator directly.
         Iterator<String> iterator = names.iterator();
 
         while (iterator.hasNext()) {
             String name = iterator.next();
 
             if(name.startsWith("A") || name.startsWith("C")) {
-                /*
-                    Usamos el iterador en vez de la coleccion para
-                    que el iterador se entere de la modificacion, es
-                    importante no usar la colección para modificarla
-                    directamente por que es una mala practica.
+               /*
+                    We use the iterator instead of the collection so that
+                    the iterator is aware of the modification. It is important
+                    not to use the collection to modify it directly because
+                    it is a bad practice.
 
-                    Solo podemos remover mas no añadir
-                 */
+                    We can only remove items, not add them.
+                */
                 iterator.remove();
             }
         }

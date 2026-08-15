@@ -2,29 +2,29 @@ package relations;
 
 public class House {
     /*
-        Relacion fuerte, esto se denomina relacion de compocision,
-        ya que si se detruye la casa, tambien se detruye room y door
+        A strong relationship—this is known as a composition relationship—
+        because if the house is destroyed, the room and door are destroyed as well.
 
-        ¿Qué es la Relación de Composición?
-        La Composición es un tipo específico y estricto de Asociación
-        (una relación "tiene un" o has-a), pero con dos reglas inquebrantables:
+        What is a Composition Relationship? 
+        Composition is a specific and strict type of Association
+        (a "has-a" relationship), but with two unbreakable rules:
 
-        1. Dependencia total del ciclo de vida: El objeto "hijo" (la parte) no
-        tiene sentido ni puede existir sin el objeto "padre" (el todo). Si
-        el padre es destruido por el Garbage Collector, todas sus partes deben
-        ser destruidas con él.
+        1. Total lifecycle dependency: The "child" object (the part)
+        has no meaning and cannot exist without the "parent" object (the whole). If
+        the parent is destroyed by the Garbage Collector, all its parts must
+        be destroyed along with it. 
 
-        2. Propiedad exclusiva: El objeto hijo le pertenece a un único padre a
-        la vez. No puede ser compartido con otros objetos.
+        2. Exclusive ownership: The child object belongs to only one parent
+        at a time. It cannot be shared with other objects. 
 
-        ¿Cómo se ve la Composición en código Java?
-        Para garantizar esta exclusividad y control del ciclo de vida, la clase
-        padre suele ser responsable de instanciar a sus clases hijas, en lugar de
-        recibirlas ya creadas desde el exterior.
+        What does Composition look like in Java code? 
+        To ensure this exclusivity and control over the lifecycle, the parent
+        class is usually responsible for instantiating its child classes, rather than
+        receiving them already created from the outside. 
 
-        Imagina un sistema de facturación. Una Factura está compuesta por LineasDeFactura
-        (los productos que estás cobrando). Una línea de factura no tiene razón de existir
-        por sí sola en el sistema si no pertenece a una factura específica.
+        Imagine a billing system. An Invoice is composed of InvoiceLines
+        (the products being billed). An invoice line has no reason to exist
+        on its own in the system if it does not belong to a specific invoice.
 
         import java.util.ArrayList;
         import java.util.List;
@@ -74,47 +74,44 @@ public class House {
             }
         }
 
-        Patrón de Arquitectura: Aggregate Root
-        En arquitecturas avanzadas, a la clase padre en una relación de composición se le llama
-        Aggregate Root (Raíz del Agregado). La regla de arquitectura dicta que otros componentes
-        del sistema no pueden interactuar directamente con las partes (hijos), sino que deben
-        pedirle siempre todo a la Raíz. No buscas una "Línea de Factura" en la base de datos,
-        buscas la "Factura" y ella te entrega sus líneas.
+        Architectural Pattern: Aggregate Root
+
+        In advanced architectures, the parent class in a composition relationship is
+        called the Aggregate Root. The architectural rule dictates that other system
+        components cannot interact directly with the parts (children); instead, they
+        must always make requests to the Root. You do not look for an "Invoice Line"
+        in the database; you look for the "Invoice," and it provides its lines to you.
     */
     private Room room; 
     private Door door;
 
     /*
-        Relacion debil
+        Weak Association
 
-        Tipo de relación de asociación, ya que pueden existir
-        independientemente del otro, si se destruye la casa
-        no se destruye el propietario.
+        A type of association relationship where the entities can exist independently of one another;
+        for instance, if the house is destroyed, the owner is not destroyed.
 
-        Mejor explicación:
+        Best explanation:
 
-        En la Programación Orientada a Objetos, decimos que hay una Asociación cuando una
-        clase "tiene un" o "conoce a" otro objeto de una clase diferente, y lo guarda como
-        parte de su estado (como un atributo/variable de instancia).
+        In Object-Oriented Programming, an association exists when a class "has" or "knows" another object
+        of a different class and stores it as part of its state (as an attribute or instance variable).
 
-        A diferencia de la dependencia, que nace y muere dentro de la ejecución de un método,
-        la asociación sobrevive mientras el objeto que la contiene siga existiendo en memoria.
+        Unlike a dependency—which arises and ceases to exist within the execution of a method—an association
+        persists as long as the containing object remains in memory.
 
-        La regla de oro de la asociación genérica es la independencia de los ciclos de vida.
-        Si la Clase A se destruye (es recogida por el Garbage Collector), la Clase B puede
-        seguir existiendo perfectamente por su cuenta. No dependen vitalmente la una de la
-        otra para tener sentido.
+        The golden rule of generic association is the independence of lifecycles.If Class A
+        is destroyed (collected by the Garbage Collector), Class B can continue to exist perfectly
+        well on its own. They do not vitally depend on each other to make sense.
 
-        1. Asociación Unidireccional
-        La Clase A conoce a la Clase B, pero la Clase B no tiene idea de que la Clase A existe.
-        Como ingenieros, esta es la que siempre debemos preferir por defecto, ya que mantiene
-        el acoplamiento bajo.
+        1. Unidirectional Association
+        Class A knows about Class B, but Class B has no idea that Class A exists. As engineers,
+        this is the type we should always prefer by default, as it keeps coupling low.
 
-        Nota que si elimino al Desarrollador, el objeto Credencial podría seguir existiendo y
-        asignarse a otro empleado.
+        Note that if I delete the Developer, the Credential object could still exist and be assigned
+        to another employee.
 
-        2. Asociación Bidireccional
-        Ambas clases se conocen mutuamente. Tienen atributos que apuntan a la otra.
+        2. Bidirectional Association
+        Both classes know about each other. They have attributes that point to one another.
 
         public class Empleado {
             private String nombre;
@@ -126,27 +123,32 @@ public class House {
             private List<Empleado> empleados;  // Conoce a Empleado (Multiplicidad 1 a Muchos)
         }
 
-        En las pizarras de arquitectura de Microsoft o Google, rara vez dibujamos una caja y una
-        flecha sin cuestionarla. Cuando estableces una asociación, especialmente bidireccional,
-        te enfrentas a tres retos de ingeniería reales:
+        On Microsoft or Google architecture whiteboards, we rarely draw a box and an arrow without
+        questioning it. When you establish an association, especially a bidirectional one, you face
+        three real engineering challenges:
 
-        1. Ciclos infinitos en Serialización (El terror de las APIs REST):
-        Si estás devolviendo el objeto Departamento en un endpoint (en formato JSON), el serializador
-        leerá el Departamento, luego irá a su lista de Empleados, entrará al primer Empleado, este
-        lo mandará de vuelta al Departamento, y así hasta que tu servidor colapse con un StackOverflowError.
-        (Por eso usamos anotaciones como @JsonIgnore en Java o rompemos las referencias circulares).
+        1. Infinite Serialization Loops (The Dread of REST APIs):
 
-        2. Gestión de Memoria:
-        En Java, el recolector de basura (Garbage Collector) no elimina un objeto si hay una referencia
-        activa apuntando hacia él. Si creas muchas asociaciones innecesarias que se quedan guardadas en
-        atributos a nivel de clase, estás reteniendo objetos en memoria que quizás ya no necesitas.
+        If you're returning the Department object to an endpoint (in JSON format), the serializer
+        will read the Department, then go to its list of Employees, enter the first Employee, this
+        will send it back to the Department, and so on until your server crashes with a StackOverflowError.
 
-        3. Inyección de Dependencias (El estándar de la industria):
-        Casi todos los frameworks modernos de Backend (como Spring Boot en Java o Nest.js en el
-        ecosistema TS/Node) basan su arquitectura en asociaciones. Cuando inyectas un Servicio
-        o un Repositorio en el constructor de tu Controlador, estás creando una Asociación.
-        El framework se encarga de crear el Servicio una vez (como Singleton) y lo asocia a tu
-        Controlador para que lo use cuando lo necesite.
+        (That's why we use annotations like @JsonIgnore in Java or break circular references.)
+
+        2. Memory Management:
+
+        In Java, the garbage collector doesn't remove an object if there's an active reference pointing to it.
+        If you create many unnecessary associations that are stored in class-level attributes, you're holding
+        onto objects in memory that you may no longer need.
+
+        3. Dependency Injection (The Industry Standard):
+
+        Almost all modern backend frameworks (such as Spring Boot in Java or Nest.js in the TS/Node ecosystem)
+        base their architecture on associations. When you inject a Service or a Repository into your Controller's
+        constructor, you are creating an Association.
+
+        The framework takes care of creating the Service once (as a Singleton) and associates it with your
+        Controller so that it can use it when needed.
     */
     private Owner owner;
 

@@ -11,29 +11,29 @@ public class BankAccount {
 
     public void deposit(double amount) {
         if (amount <= 0) {
-            System.out.println("El monto ingresado no es correcto.");
+            System.out.println("The amount entered is incorrect.");
 
             return;
         }
 
         balance += amount;
 
-        System.out.println("Depósito exitoso!!!");
+        System.out.println("Successful deposit!!!");
     }
 
     public void withdraw(double amount) {
         if (amount <= 0 || amount > this.balance) {
-            System.out.println("Fondos insuficientes o monto inválido");
+            System.out.println("Insufficient funds or invalid amount");
 
             return;
         }
 
         this.balance -= amount;
 
-        System.out.println("Extracción éxitosa!!!");
+        System.out.println("Successful extraction!!!");
     }
 
     public void displayBalance() {
-        System.out.println("Saldo: " + this.balance);
+        System.out.println("Balance: " + this.balance);
     }
 }

@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 /*
-    La manera correcta de crear paquetes es el siguiente:
+    The correct way to create packages is as follows:
 
-    - Nombre de la empresa, normalmente el dominio de la empresa
-    - Nombre de la empresa
-    - Nombre del proyecto
-    - Nombre del modulo
- */
+    - Company name, normally the company domain
+    - Company name
+    - Project name
+    - Module name
+*/
 
 public class Main {
     static void main(String[] args) {

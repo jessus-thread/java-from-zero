@@ -6,8 +6,8 @@ public class HouseMain {
         House secondHouse = new House(3, 4, 20);
 
         /*
-            Permitir acceder a los atributos de una clase de forma
-            directa es una mala práctica ya que viola el principio de encapsulamiento.
+            Allowing direct access to a class's attributes is bad practice,
+            as it violates the principle of encapsulation.
 
             firstHouse.doors = 3;
             firstHouse.windows = 5;

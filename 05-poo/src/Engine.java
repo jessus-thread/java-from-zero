@@ -1,14 +1,13 @@
 /*
-    La clase Engine la usamos para aplicar la compocisión,
-    ya que no todos los vehiculos tienen motor.
+    We use the Engine class to apply the composition, since not all vehicles have an engine.
  */
 public class Engine {
     /*
-        El primer tipo de polimortfismo que es sobrecarga que se evalua
-        en tiempos de compilación quiere decir que podemos tener muchos
-        métodos que se llamen igual pero la firma que los va a diferenciar
-        es la cantidad de parametros, el tipo de dato del parametro y
-        el retorno del metodo
+        The first type of polymorphism, overloading, which is evaluated
+        at compile time, means that we can have many
+        methods with the same name, but the signature that differentiates them
+        is the number of parameters, the parameter data type, and
+        the method's return value
      */
     public void start() {
         System.out.println("Starting Vehicle");

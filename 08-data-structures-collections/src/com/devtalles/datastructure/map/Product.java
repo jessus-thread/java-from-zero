@@ -26,10 +26,10 @@ public class Product implements Comparable<Product>{
     }
 
     static void main() {
-        /*
-            Es buena idea usar como clave el objeto que en este caso es
-            Product cuando necesitamos ordenar por mas de un criterio
-         */
+       /*
+            It is a good idea to use the object as the key—in this case,
+            Product—when we need to sort by more than one criterion.
+        */
         Map<Product, Double> priceMap = new TreeMap<>();
 
         priceMap.put(new Product(123, "Laptop"), 1000.0);
@@ -48,7 +48,7 @@ public class Product implements Comparable<Product>{
 
         System.out.println(priceMap);
 
-        // Obtener valor
+        // Get value
         System.out.println(priceMap.get(new Product(22, "Mouse")));
     }
 }

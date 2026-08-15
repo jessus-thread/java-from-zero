@@ -13,7 +13,7 @@ public class Person implements Comparable<Person> {
 
     @Override
     public boolean equals(Object o) {
-        // Compara si estamos mandando el mismo objeto
+        // Check if we are sending the same object.
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -23,19 +23,19 @@ public class Person implements Comparable<Person> {
     }
 
     /*
-        El hashCode es el elemento que se utiliza cuando nosotros
-        queremos agregar un elemento a un HashSet, cuando nosotros
-        agregamos ese elemento ahi se ejecutara automaticamente
-        este metodo. Este metodo crea una clave, si es un wrapper
-        lo va a crear en función del dato pero si es una clase
-        personalizada se va crear en funcion de los datos que
-        nosotros le vamos a proporcionar.
+        The hashCode is the element used when we
+        want to add an element to a HashSet. When we
+        add that element, this method is executed
+        automatically. This method creates a key; if it is a wrapper,
+        it will create it based on the data, but if it is a
+        custom class, it will be created based on the data we
+        provide.
 
-        Colision de hash
+        Hash collision
 
-        El segundo metodo que se ejecuta al agregar elementos es el
-        equals, si pasa todas las verificaciones lo va a añadir, si no no
-     */
+        The second method executed when adding elements is
+        equals. If it passes all verifications, it will be added; otherwise, it won't.
+    */
     @Override
     public int hashCode() {
         return Objects.hashCode(dni);
@@ -48,11 +48,10 @@ public class Person implements Comparable<Person> {
                 ", dni='" + dni + '\'' +
                 '}';
     }
-
+    
     /*
-        Sirve para indicarle al TreeSet que vamos a ordenar
-        por el dni
-     */
+        Used to tell the TreeSet that we are going to sort by DNI.
+    */
     @Override
     public int compareTo(Person o) {
         return this.dni.compareTo(o.dni);

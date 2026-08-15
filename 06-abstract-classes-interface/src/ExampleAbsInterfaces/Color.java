@@ -1,8 +1,7 @@
 package ExampleAbsInterfaces;
 
 /*
-    Conjunto de valores constantes que ayudan a mejorar la
-    legibilidad y reducir errores de escritura
+    A set of constant values ​​that help improve readability and reduce typing errors.
  */
 public enum Color {
     RED,

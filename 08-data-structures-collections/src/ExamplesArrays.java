@@ -3,16 +3,31 @@ import java.util.ArrayList;
 public class ExamplesArrays {
     public static void main(String[] args) {
         /*
-            Arreglo de números enteros (Wrapper). Este arreglo es estático,
-            es decir, una vez instanciado en memoria, su longitud es inmutable.
+            Array of integers (Wrapper). This array is static,
+            meaning that once instantiated in memory, its length is immutable.
 
-            Rendimiento: Los arreglos estáticos no tienen la sobrecarga de
-            los métodos de una clase como ArrayList. Son el acceso más directo
-            a la memoria RAM que permite Java.
-         */
+            Performance: Static arrays do not have the overhead of
+            the methods of a class like ArrayList. They are the most
+            direct access to RAM memory that Java allows.
+        */
         Integer[] numbers = { 1, 2, 3, 4, 5 };
 
-        // Modificar un valor por posición en específico: O(1)
+       /*
+            Modify a value at a specific position: O(1)
+
+            That O(1) is part of what in computer science we call Big O Notation, which is used to measure the efficiency and performance of an algorithm.
+
+            Specifically, O(1) means "Constant Time".
+
+            It means that this operation will take the exact same amount of time and resources, no matter how large the data structure is. Your numbers array could have 10 elements or 100 million elements; modifying position [0] will take the exact same effort: a single step.
+
+            To contrast (Linear Time)
+
+            If instead of modifying a specific position, you had to search for the number 1000 inside the array without knowing its position, you would have to use a for loop to check index 0, then 1, then 2... until you find it.
+
+            If the array has 1 million elements, in the worst-case scenario you would have to perform 1 million steps. This is known as O(n) or "Linear Time", because the execution time grows linearly along with the amount of data.
+
+        */
         numbers[0] = 1000;
 
         for (Integer num : numbers) {
@@ -22,32 +37,35 @@ public class ExamplesArrays {
         System.out.println("--------------------------");
 
         /*
-            Reservamos un bloque contiguo en memoria para 100 elementos.
+            We allocate a contiguous block of memory for 100 elements.
 
-            Nota técnica: Al ser un arreglo de primitivos (int), el valor por
-            defecto de cada posición se inicializa automáticamente en 0 a nivel
-            de bytes. No hay valores null aquí.
+            Technical note: Being an array of primitives (int), the default value
+            of each position is automatically initialized to 0 at the byte level.
+            There are no null values here.
 
-            La palabra reservada 'new' indica que el arreglo en sí mismo es un
-            objeto para la Máquina Virtual de Java (JVM), aunque su contenido
-            sean datos primitivos puros.
-         */
+            The 'new' keyword indicates that the array itself is an object
+            for the Java Virtual Machine (JVM), even though its content consists
+            of pure primitive data.
+
+        */
         int[] fixedArray = new int[100];
 
         for (int number : fixedArray) {
             System.out.println(number);
         }
 
-        // length no es un método (no lleva paréntesis), es un atributo final (constante) del arreglo.
+        /*
+            `length` is not a method (it does not take parentheses); it is a final attribute (constant) of the array.
+        */
         System.out.println("Dimensión: " + fixedArray.length);
 
-        /*
-            Estructuras de datos dinámicas (Java Collections Framework)
+      /*
+            Dynamic data structures (Java Collections Framework)
 
-            Para usar genéricos (<>) y colecciones dinámicas, Java nos obliga
-            a usar Clases Wrapper (Integer) porque el JFC trabaja exclusivamente
-            con Referencias a Objetos, no con primitivos.
-         */
+            To use generics (<>) and dynamic collections, Java forces us
+            to use Wrapper classes (like Integer) because the JFC works exclusively
+            with Object references, not with primitives.
+        */
         ArrayList<Integer> numbers2 = new ArrayList<>();
         numbers2.add(30);
 
@@ -57,26 +75,26 @@ public class ExamplesArrays {
 
         System.out.println("--------------------------");
 
-        // Primitivos: Memoria pura, valor por defecto = 0
+        // Primitives: Raw memory, default value = 0
         int[] numbersPrimitive = new int[5];
 
-        // Wrappers: Referencias a objetos, valor por defecto = null
+        // Wrappers: Object references, default value = null
         Integer[] numbersWrapper = new Integer[5];
 
-        /*
-            Regla de Arquitectura:
-            - Usamos primitivos (int[]) cuando necesitamos máximo rendimiento,
-              cálculos matemáticos puros y no nos importa el estado "ausente".
-            - Usamos Wrappers (Integer[]) o Colecciones cuando necesitamos
-              representar la ausencia de valor (null), interactuar con APIs,
-              o utilizar métodos utilitarios (.toString(), .parseInt()).
-         */
+      /*
+            Architecture Rule:
+            - We use primitives (int[]) when we need maximum performance,
+            pure mathematical calculations, and don't care about an "absent" state.
+            - We use Wrappers (Integer[]) or Collections when we need
+            to represent the absence of a value (null), interact with APIs,
+            or use utility methods (.toString(), .parseInt()).
+        */
         numbersPrimitive[0] = 5;
         numbersWrapper[4] = 50;
 
-        // Bucle For-Each (Sintaxis mejorada para iteradores)
+        // For-Each Loop (Enhanced syntax for iterators)
         for (Integer num : numbersWrapper) {
-            // Protección contra NullPointerException (NPE)
+            // Protection against NullPointerException (NPE)
             if (num != null) {
                 System.out.println(num.toString());
                 continue;
@@ -86,26 +104,26 @@ public class ExamplesArrays {
 
         System.out.println("-------------------------------------------------");
 
-        /*
-            REDIMENSIONAMIENTO MANUAL: La magia detrás de ArrayList
-            Como los arreglos son inmutables en tamaño, la única forma de
-            "crecer" es crear un arreglo nuevo y copiar los datos.
-         */
+       /*
+            MANUAL RESIZING: The magic behind ArrayList
+            Since arrays are immutable in size, the only way to
+            "grow" is to create a new array and copy the data.
+        */
         int[] numberOriginal = new int[5];
         numberOriginal[0] = 20;
         numberOriginal[4] = 29;
 
-        // 1. Creamos un nuevo espacio de memoria con la capacidad ampliada.
+       // 1. We create a new memory space with the expanded capacity.
         int[] newNumbers = new int[numberOriginal.length + 1];
 
         /*
             2. System.arraycopy(): O(n)
-            Este método es extremadamente rápido porque no itera elemento por elemento
-            en Java. Es un método "nativo" (escrito en C/C++) que le dice al Sistema
-            Operativo que copie un bloque de memoria RAM directamente a otra dirección.
+            This method is extremely fast because it does not iterate element by element
+            in Java. It is a "native" method (written in C/C++) that tells the Operating
+            System to copy a block of RAM memory directly to another address.
 
-            Parámetros: (origen, posOrigen, destino, posDestino, cantidadDeElementos)
-         */
+            Parameters: (source, sourcePosition, destination, destinationPosition, length)
+        */
         System.arraycopy(numberOriginal, 0, newNumbers, 0, numberOriginal.length);
 
         newNumbers[5] = 500;
@@ -117,24 +135,24 @@ public class ExamplesArrays {
         System.out.println("--------------------------------");
 
         /*
-            ELIMINACIÓN MANUAL: Desplazamiento de bits (Shift)
-            Esta es la recreación exacta de por qué ArrayList.remove() es O(n).
-         */
+            MANUAL REMOVAL: Shifting
+            This is the exact recreation of why ArrayList.remove() is O(n).
+        */
         int[] numbersRandoms = {1, 2, 3, 4, 5, 9, 0};
-        final int deletePosition = 2; // Queremos borrar el '3'
+        final int deletePosition = 2; // We want to erase the '3'.
 
         /*
-            Iteramos desde la posición a borrar, y movemos todos los elementos
-            de la derecha un espacio hacia la izquierda. Tapamos el hueco.
-         */
+            We iterate from the position to be deleted, and move all elements
+            to the right one space to the left. We fill the gap.
+        */
         for (int i = deletePosition; i < numbersRandoms.length - 1; i++) {
             numbersRandoms[i] = numbersRandoms[i + 1];
         }
 
-        // Limpiamos la última posición sobrante (opcional, pero buena práctica)
+        // We clear the last remaining position (optional, but good practice).
         numbersRandoms[numbersRandoms.length - 1] = 0;
 
-        // Modificación extra
+        // Additional modification
         numbersRandoms[0] = 200;
 
         for (int number : numbersRandoms) {

@@ -2,49 +2,48 @@ package relations;
 
 public class Person {
     /*
-        Relación de dependencia
+       Dependency Relationship
 
-        En el mundo de UML y la POO, la dependencia (a menudo llamada relación "usa un" o uses-a)
-        es la relación más débil y efímera que puede existir entre dos clases.
+        In the world of UML and OOP, dependency (often called a "uses-a" relationship)
+        is the weakest and most ephemeral relationship that can exist between two classes.
 
-        Decimos que la Clase A depende de la Clase B si un cambio en la estructura o comportamiento
-        de la Clase B obliga a modificar la Clase A. Es decir, A "conoce" a B y la necesita para
-        realizar una tarea específica, pero B no forma parte del estado (atributos) de A.
+        We say that Class A depends on Class B if a change in the structure or behavior
+        of Class B forces a modification of Class A. That is, A "knows" B and needs it to
+        perform a specific task, but B is not part of A's state (attributes).
 
-        A diferencia de la Asociación o la Composición (donde una clase guarda a la otra en una
-        variable de instancia o atributo para usarla a largo plazo), la dependencia es temporal.
-        La usas, hace su trabajo y te olvidas de ella.
+        Unlike Association or Composition (where one class stores the other in an
+        instance variable or attribute for long-term use), dependency is temporary.
 
-        ¿Cómo se ve la Dependencia en el código Java?
+        You use it, it does its job, and you forget about it.
 
-        Como Tech Lead, cuando hago code reviews, identifico una relación de
-        dependencia pura cuando veo a la Clase B apareciendo en la Clase A
-        de una de estas cuatro formas:
+        How does Dependency look in Java code?
 
-        - Como parámetro de un método: La Clase A recibe un objeto de la Clase
-            B para operar con él.
-        - Como variable local: La Clase A instancia (hace un new) de la Clase B
-            dentro del bloque de un método.
-        - Como tipo de retorno: Un método de la Clase A devuelve un objeto de la Clase B.
-        - Llamada estática: La Clase A invoca un método estático de la Clase B (por ejemplo,
-            cuando usas Math.max() o utilerías).
+        As a Tech Lead, when I do code reviews, I identify a pure dependency relationship when
+        I see Class B appearing in Class A in one of these four ways:
 
-        Aquí es donde entra la experiencia en empresas grandes. Las dependencias no son malas,
-        de hecho, son inevitables (un programa sin dependencias es un programa que no hace nada).
-        El problema es el grado de acoplamiento.
+        - As a method parameter: Class A receives an object of Class B to operate on.
 
-        Cuando haces new ValidadorRed() dentro del método (dependencia por variable local), estás
-        creando un acoplamiento fuerte (tight coupling). Estás "casando" a tu ProcesadorPagos con
-        la implementación exacta de ValidadorRed.
+        - As a local variable: Class A instantiates (creates a new instance of) Class B within a method block.
 
-        ¿El problema? Cuando quieras escribir pruebas unitarias para ProcesadorPagos, no vas a poder
-        falsear (mockear) esa red. El código siempre intentará conectarse a la red real porque el new
-        está clavado ahí adentro (hardcodeado).
+        - As a return type: A method of Class A returns an object of Class B.
 
-        Por eso, a nivel de arquitectura, siempre buscamos transformar estas dependencias locales en
-        Asociaciones inyectadas a través del constructor, utilizando frameworks como Spring Boot
-        (lo que conocerás como Inyección de Dependencias). Pero a nivel de POO puro, cualquier uso
-        temporal de un objeto es una relación de dependencia.
+        - Static call: Class A invokes a static method of Class B (for example, when using Math.max() or utilities).
+
+        This is where experience in large companies comes in. Dependencies aren't bad; in fact, they're unavoidable
+        (a program without dependencies is a program that does nothing). The problem is the degree of coupling.
+
+        When you use new ValidadorRed() within the method (a local variable dependency), you're creating tight coupling.
+        You're "marrying" your PaymentProcessor to the exact implementation of NetworkValidator.
+
+        The problem? When you want to write unit tests for PaymentProcessor, you won't be able to
+        mock that network. The code will always try to connect to the real network because the new
+        is hardcoded in there.
+
+        That's why, at the architectural level, we always try to transform these local dependencies into
+        associations injected through the constructor, using frameworks like Spring Boot
+
+        (what you'll know as Dependency Injection). But at the pure OOP level, any temporary use
+        of an object is a dependency relationship.
     */
     public void calculateSum(Calculator calculator) {
         int result = calculator.add(20, 30);

@@ -1,12 +1,10 @@
 package ExampleAbsInterfaces;
 
 /*
-    Podemos implementar muchas interfaces en una clase,
-    las interfaces no tienen una relacion de parentesco
-    con las clases, es decir, si tenemos una interfaz
-    "volar" puede aplicarse a un ave, a un super heroe,
-    avion, las clases abstractas si tienen una relacion
-    de parentezco
+    We can implement multiple interfaces in a single class; interfaces do not share
+    a parent-child relationship with classes—for instance, a "fly" interface could
+    apply to a bird, a superhero, or an airplane—whereas abstract classes do involve
+    a parent-child relationship.
  */
 public class ElectricCar extends Vehicle implements Electric, SelfDriving {
     private int batteryLevel;
@@ -22,12 +20,11 @@ public class ElectricCar extends Vehicle implements Electric, SelfDriving {
     }
 
     /*
-        Sobreescribimos el metodo que declaramos como abstract
-        en la clase abstracta
+       We override the method declared as abstract in the abstract class.
      */
     @Override
     public void drive() {
-        System.out.println("El auto eléctrico está en marcha");
+        System.out.println("The electric car is underway.");
     }
 
     @Override
@@ -39,7 +36,7 @@ public class ElectricCar extends Vehicle implements Electric, SelfDriving {
 
     @Override
     public void activateAutopilot() {
-        System.out.println("Modo piloto automático activado");
+        System.out.println("Autopilot mode activated");
     }
 
     @Override

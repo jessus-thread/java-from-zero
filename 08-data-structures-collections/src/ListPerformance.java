@@ -6,12 +6,12 @@ public class ListPerformance {
         List<Integer> linkedList = new LinkedList<>();
 
         /*
-            El signo _ sirve para felicitar la lectura, ya que que facilmente
-            sabemos que es cien mil
-         */
+            The underscore symbol (_) is used to make reading easier, since
+            we can easily recognize that it is one hundred thousand.
+        */
         int elements = 100_000;
 
-        // Insertar al final
+        // Insert at the end
         long start = System.nanoTime();
 
         for (int i = 0; i < elements; i++) {
@@ -32,7 +32,7 @@ public class ListPerformance {
 
         System.out.println("LinkedList insertion time: " + (end - start) + " ns");
 
-        // Acceder a elementos
+        // Access items
         start = System.nanoTime();
         arrayList.get(elements / 2);
         end = System.nanoTime();
@@ -43,7 +43,7 @@ public class ListPerformance {
         end = System.nanoTime();
         System.out.println("LinkedList access time: " + (end - start) + " ns");
 
-        // Eliminar elementos
+        // Delete items
         start = System.nanoTime();
         arrayList.remove(elements / 2);
         end = System.nanoTime();

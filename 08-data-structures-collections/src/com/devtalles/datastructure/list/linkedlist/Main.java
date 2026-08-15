@@ -6,83 +6,83 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        /*
-            Actualización sobre métodos de LinkedList en JDK 21+ (JEP 431: Sequenced Collections)
+    /*
+        Update on LinkedList methods in JDK 21+ (JEP 431: Sequenced Collections)
 
-            En versiones anteriores a Java 21, si tipábamos con la interfaz padre (List),
-            perdíamos acceso a los métodos específicos de los extremos de LinkedList.
-            A partir del JDK 21, List hereda de SequencedCollection, incorporando
-            por defecto métodos como addFirst(), addLast(), removeFirst() y removeLast().
+        In versions prior to Java 21, if we typed with the parent interface (List),
+        we lost access to the specific methods at the ends of LinkedList.
+        Starting from JDK 21, List inherits from SequencedCollection, incorporating
+        methods like addFirst(), addLast(), removeFirst(), and removeLast() by default.
 
-            - Ya no es necesario hacer casting a LinkedList para usarlos en Java 21+.
-            - Refleja la evolución de la arquitectura del lenguaje orientada a interfaces.
-         */
+        - It is no longer necessary to cast to LinkedList to use them in Java 21+.
+        - This reflects the evolution of the language's interface-oriented architecture.
+    */
         List<String> cities = new LinkedList<>();
 
         /*
-            Inserción estándar: O(1)
-            El método add() viene de la interfaz Collection. En una LinkedList,
-            esto simplemente enlaza un nuevo nodo al final de la cadena (Tail).
-         */
+            Standard insertion: O(1)
+            The add() method comes from the Collection interface. In a LinkedList,
+            this simply links a new node to the end of the chain (Tail).
+        */
         cities.add("Buenos Aires");
         cities.add("Coatzacoalcos");
         cities.add("New York");
 
-        /*
-            Inserción en los extremos: O(1) - ¡Aquí brilla LinkedList!
-            Casteamos a LinkedList (necesario en JDK < 21) para acceder a sus métodos
-            nativos. A nivel de memoria, esto no desplaza ningún elemento existente,
-            solo actualiza los apuntadores del primer y último nodo.
-         */
+       /*
+            Insertion at the ends: O(1) - This is where LinkedList shines!
+            We cast to LinkedList (necessary in JDK < 21) to access its native methods.
+            At the memory level, this does not shift any existing elements,
+            it only updates the pointers of the first and last node.
+        */
         ((LinkedList<String>) cities).addFirst("London");
         ((LinkedList<String>) cities).addLast("Berlin");
 
         /*
-            Acceso por índice: O(n) - ¡El talón de Aquiles de LinkedList!
-            Aunque aquí pedimos el índice 0 (lo cual es rápido), conceptualmente
-            el método get(index) es ineficiente en listas enlazadas porque obliga
-            a recorrer los nodos secuencialmente hasta encontrar la posición.
-         */
+            Index access: O(n) - The Achilles' heel of LinkedList!
+            Although here we request index 0 (which is fast), conceptually
+            the get(index) method is inefficient in linked lists because it forces
+            traversing the nodes sequentially until it finds the position.
+        */
         System.out.println(cities.get(0));
         System.out.println(cities);
 
-        // Actualizar un elemento mediante índice (También requiere recorrer la lista: O(n))
+        // Update an element by index (Also requires traversing the list: O(n))
         System.out.println(cities.set(2, "Madrid"));
 
-        /*
-            Eliminación por índice o valor:
-            Paso 1: Buscar el elemento O(n) - Tiene que recorrer la lista.
-            Paso 2: Eliminar el elemento O(1) - Solo rompe y reconecta 2 apuntadores.
+       /*
+            Deletion by index or value:
+            Step 1: Search for the element O(n) - It has to traverse the list.
+            Step 2: Remove the element O(1) - It only breaks and reconnects 2 pointers.
 
-            A diferencia de ArrayList, NO hay desplazamiento de los elementos a la derecha.
-         */
+            Unlike ArrayList, there is NO shifting of elements to the right.
+        */
         System.out.println(cities.remove(1));
         System.out.println(cities.remove("Berlin"));
 
         System.out.println(cities);
 
-        /*
-            Eliminación en los extremos: O(1)
-            Liberación de memoria ultra rápida. Ideal para implementar estructuras
-            como Colas (Queues - FIFO) o Pilas (Stacks - LIFO).
-         */
+     /*
+        Removal at the ends: O(1)
+        Ultra-fast memory deallocation. Ideal for implementing data structures
+        like Queues (FIFO) or Stacks (LIFO).
+    */
         ((LinkedList<String>) cities).removeFirst();
         ((LinkedList<String>) cities).removeLast();
 
         String searchCity = "Buenos Aires";
 
-        // contains() internamente ejecuta una búsqueda lineal O(n)
+        // contains() internally performs an O(n) linear search.
         if (cities.contains(searchCity)) {
-            System.out.println("Está en la lista: " + searchCity);
+            System.out.println("It's on the list.: " + searchCity);
         } else {
-            System.out.println("No está en la lista: " + searchCity);
+            System.out.println("It is not on the list.: " + searchCity);
         }
 
-        /*
-            Iteración secuencial.
-            Para LinkedList, usar foreach (que por debajo usa un Iterator) es la forma
-            correcta y eficiente de recorrerla, en lugar de un for tradicional con get(i).
-         */
+    /*
+        Sequential iteration.
+        For a LinkedList, using a foreach loop (which uses an Iterator under the hood) is the
+        correct and efficient way to traverse it, instead of a traditional for loop with get(i).
+    */
         for (String city : cities) {
             System.out.println("- " + city);
         }

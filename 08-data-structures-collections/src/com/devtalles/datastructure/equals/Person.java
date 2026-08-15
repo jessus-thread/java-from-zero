@@ -12,10 +12,10 @@ public class Person {
     @Override
     public boolean equals(Object obj) {
         /*
-            1. El primer if compara si apuntan al mismo espacio en memoria
-            2. El segundo if comprueba si es null o si son de diferente
-            tipo si una de las dos condiciones se cumplen retorna fale
-         */
+            1. The first if checks if they point to the same memory location.
+            2. The second if checks if it is null or if they are of different types;
+                if either condition is met, it returns false.
+        */
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
 

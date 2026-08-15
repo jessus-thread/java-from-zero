@@ -1,28 +1,27 @@
 /*
-    De esta manera aplicamos herencia, Car extiende de la clase
-    Vehicle, es decir, va heredar propiedades y metodos de la
-    clase padre que es Vehicle.
+    In this way, we apply inheritance. `Car` extends the `Vehicle` class; that is,
+    it will inherit properties and methods from its parent class, `Vehicle`.
 
-    Las clases solo pueden heredar de una clase de manera directa.
+    Classes can only inherit directly from one other class.
 
-    A esto se le llama relacion de herencia, por que Car hereda
-    metodos y propiedades
+    This is called an inheritance relationship because `Car` inherits methods
+    and properties.
  */
 public class Car extends Vehicle{
     /*
-        Relacion de compocision, para saber esto podemos
-        hacernos la siguiente pregunta ¿Car tiene puertas?
-        si la respuesta es si es por que existe una relacion
-        de compocision ya que car esta compuesta de 2 a 4
-        puertas
+        Composition relationship: To determine this, we can ask ourselves the following
+        question: Does a car have doors?
+
+        If the answer is yes, it's because there is a composition relationship, since
+        a car is composed of 2 to 4 doors.
      */
     private int doors;
     private Engine engine;
 
     public Car(String brand, String model, int year, int doors) {
         /*
-            De esta manerá establecemos valores a las propiedades
-            heredadas del padre llamando al metodo super.
+            In this way we set values ​​for the properties
+            inherited from the parent by calling the super method.
          */
         super(brand, model, year);
 
@@ -31,8 +30,8 @@ public class Car extends Vehicle{
     }
 
     /*
-        El segundo tipo de polimorfismo que es en tiempos de ejecución
-        se llama sobreescritura de metodos.
+       The second type of polymorphism, which occurs at runtime,
+        is called method overriding.
      */
     public void start() {
         System.out.println("The car is start - override");

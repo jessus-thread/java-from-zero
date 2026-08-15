@@ -6,22 +6,22 @@ public class ExampleEquals {
         Integer numberB = 100;
 
         /*
-            Pregunta si estas direcciones de memorias son exactamente iguales
+            It checks whether these memory addresses are exactly the same.
 
-            Pero algo importante a recordar es que guarda cache en numeros
-            de -128 a 127, por eso es que al comparar 100 == 100 da true
-            pero al comparar numeros mayores a 127 por mas que ambas variables
-            almacenen lo mismo va a dar false.
+            However, something important to remember is that it caches numbers
+            from -128 to 127. This is why comparing 100 == 100 returns true,
+            but comparing numbers greater than 127 will return false, even if
+            both variables store the exact same value.
 
-            ¿Por qué se cachean los números entre -128 y 127?
+            Why are numbers between -128 and 127 cached?
 
-            Porque son los valores más usados en la mayoría de los programas
-            según Java. Java evita crear nuevos objetos para estos valores y
-            reutiliza las instancias que ya están en la memoría
-         */
+            Because they are the most frequently used values in most programs,
+            according to Java. Java avoids creating new objects for these values
+            and reuses the instances already present in memory.
+        */
         System.out.println(numberA == numberB);
 
-        // Compara el valor en si
+        // Compare the value itself.
         System.out.println(numberA.equals(numberB));
     }
 }

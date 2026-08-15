@@ -6,11 +6,11 @@ public class BankApp {
     private BankAccount account;
     private Scanner scanner;
     private final String[] options = {
-        "\nSeleccionar opciones: ",
-        "1 - Dépositar dinero",
-        "2 - Retirar dinero",
-        "3 - Mostrar saldo",
-        "4 - salir"
+        "\nSelect options: ",
+        "1 - Deposit money",
+        "2 - Withdraw money",
+        "3 - Show balance",
+        "4 - go out"
     };
 
     public BankApp(BankAccount bankAccount) {
@@ -47,13 +47,13 @@ public class BankApp {
     }
 
     private void handleDeposit() {
-        double depositAmount = this.createInputScanner("Ingrese el monto a depositar: ");
+        double depositAmount = this.createInputScanner("Enter the amount to deposit: ");
 
         this.account.deposit(depositAmount);
     }
 
     private void handleWithdrawal() {
-        double withdrawAmount = this.createInputScanner("Ingrese el monto a retirar: ");
+        double withdrawAmount = this.createInputScanner("Enter the amount to withdraw: ");
 
         this.account.withdraw(withdrawAmount);
     }
@@ -76,12 +76,12 @@ public class BankApp {
                 break;
             }
             case 4: {
-                System.out.println("Gracias por utilizar la app");
+                System.out.println("Thank you for using the app.");
 
                 break;
             }
             default: {
-                System.out.println("Opción incorrecta");
+                System.out.println("Incorrect option");
             }
         }
     }

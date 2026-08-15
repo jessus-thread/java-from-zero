@@ -1,11 +1,11 @@
 /*
-    Al utilizar la herencia debemos tener en cuenta que
-    al usarlo tiene un costo, ya que por ejemplo la clase
-    Bicycle es un vehiculo pero no debería tener los metodos
-    de start y stop ya que no tiene motor, esta heredando
-    metodos que no utiliza, pero no podemos borrar los metodos
-    stop y start de clase padre ya que afectariamos a la clase
-    Car y Motorcycle, la solucion es la compocision
+    When using inheritance, we must keep in mind that
+    its use comes at a cost, since, for example, the Bicycle class
+    is a vehicle but shouldn't have the start and stop methods
+    since it doesn't have an engine. It's inheriting
+    methods it doesn't use, but we can't delete the stop and start methods
+    from the parent class because we would affect the Car and Motorcycle classes.
+    The solution is composition.
  */
 public class Bicycle extends Vehicle {
     private boolean hasBeell;

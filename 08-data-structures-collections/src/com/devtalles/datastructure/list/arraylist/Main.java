@@ -6,69 +6,69 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        /*
-            Siempre es mejor tipar la variable con la interfaz padre (Polimorfismo).
+       /*
+            It is always better to declare the variable using the parent interface (Polymorphism).
 
-            Algo que debemos tener en cuenta es que el ArrayList utiliza un arreglo
-            fijo por debajo. Cada vez que este arreglo llega a su límite de capacidad,
-            Java crea un nuevo arreglo con un 50% más de posiciones y hace una
-            copia masiva de todos los elementos originales a este nuevo espacio de memoria.
-         */
+            Something to keep in mind is that ArrayList uses a fixed array underneath.
+            Whenever this array reaches its capacity limit, Java creates a new array
+            with 50% more positions and performs a bulk copy of all original elements
+            to this new memory space.
+        */
         List<String> students = new ArrayList<>();
 
         /*
-            Inserción secuencial: Amortizada O(1)
-            Agrega un elemento siempre al final. Generalmente es instantáneo,
-            a menos que se alcance la capacidad máxima y se dispare el
-            redimensionamiento (ahí costaría O(n)).
-         */
+            Sequential insertion: Amortized O(1)
+            Always adds an element at the end. It is generally instantaneous,
+            unless the maximum capacity is reached and resizing is triggered
+            (at that point it costs O(n)).
+        */
         students.add("Patricia");
         students.add("Jesús");
         students.add("Fernando");
 
-        /*
-            Inserción por índice: O(n) - ¡La debilidad de ArrayList!
-            Método sobrecargado de add. Agrega un elemento en una posición en específico.
-            A nivel de memoria, esto obliga a desplazar hacia la derecha a todos
-            los elementos posteriores para hacerle espacio a "Alejandro".
-         */
+    /*
+        Insertion by index: O(n) - The weakness of ArrayList!
+        Overloaded add method. Adds an element at a specific position.
+        At the memory level, this forces all subsequent elements to be shifted
+        to the right to make room for "Alejandro".
+    */
         students.add(1, "Alejandro");
 
         System.out.println(students);
 
         /*
-            Acceso por índice: O(1) - ¡Aquí es donde ArrayList destruye a LinkedList!
-            El acceso es directo e instantáneo mediante cálculo matemático en RAM.
-         */
+            Index access: O(1) - This is where ArrayList destroys LinkedList!
+            Access is direct and instantaneous via mathematical calculation in RAM.
+        */
         System.out.println(students.get(2));
 
         /*
-            Elimina el elemento mediante su índice y retorna el dato que fue eliminado.
+            Removes the element at the specified index and returns the removed data.
 
-            Nota (para ArrayList): O(n)
-            Con el método remove pareciera que eliminamos de manera directa y mágica,
-            pero en realidad, a nivel de memoria, Java tiene que recorrer y desplazar
-            hacia la izquierda todos los elementos posteriores para tapar el hueco
-            y reacomodar la lista.
-         */
+            Note (for ArrayList): O(n)
+            With the remove method, it might seem like we are deleting directly and magically,
+            but in reality, at the memory level, Java has to iterate and shift all subsequent
+            elements to the left to fill the gap and rearrange the list.
+        */
         System.out.println(students.remove(2));
 
         System.out.println(students);
 
-        /*
-            Actualización por índice: O(1)
-            Como el acceso es directo, sobrescribir el valor en esa celda
-            de memoria es instantáneo. Retorna el valor anterior.
-         */
+       /*
+            Update by index: O(1)
+            Since access is direct, overwriting the value in that memory
+            cell is instantaneous. Returns the previous value.
+        */
         System.out.println(students.set(0, "Patricia - Actualizada"));
 
         System.out.println(students);
 
         /*
-            Búsqueda por valor: O(n)
-            Comprueba si un elemento existe en la lista. Como Java no sabe en
-            qué índice está, tiene que iterar desde el principio comparando uno por uno.
-         */
+            Search by value: O(n)
+            Checks if an element exists in the list. Since Java doesn't know
+            at which index it is, it has to iterate from the beginning,
+            comparing one by one.
+        */
         System.out.println(students.contains("Alejandro"));
     }
 }

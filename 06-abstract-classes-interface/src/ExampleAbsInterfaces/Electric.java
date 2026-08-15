@@ -1,23 +1,20 @@
 package ExampleAbsInterfaces;
 
 /*
-    Las interfaces son contratos y deben cumplirse por clases
-    que implementen esta interfaz.
+    Interfaces are contracts that must be fulfilled by classes implementing them.
 
-    No tienen constructores, no tienen metodos implementados
+    They do not have constructors or implemented methods.
 
-    No es común tener atributos en las interfaces pero es posible
+    While having attributes in interfaces is uncommon, it is possible.
 
-    Solo podemos tener constantes staticas y publicas, las
-    constantes no las podemos modifica
+    They can only contain public, static constants; these constants cannot be modified.
  */
 public interface Electric {
     int MAX_BATTERY_CAPACITY = 100;
 
     /*
-        poner public es redundante, ya que se entiende
-        que todas las clases que implementen esta interfaz
-        van a poder sobreescribir estos metodos
+        Specifying `public` is redundant, since it is understood that any class
+        implementing this interface will be able to override these methods.
      */
 
     void chargeBattery();

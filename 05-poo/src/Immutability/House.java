@@ -1,19 +1,19 @@
 package Immutability;
 
 /*
-    La inmutabilidad de clase
+    Class Immutability
 
-    Significa que una vez creada una instancia de esa clase
-    su estado no puede cambiar, eso quiere decir que todos
-    los atributo tendran el mismo valor una vez creada y
-    no se podrán cambiar.
+    This means that once an instance of that class is created,
+    its state cannot change. This means that all
+    attributes will have the same value once created and
+    cannot be changed.
 
-    Para poder crear una clase inmutable necesitamos
-    colocar como constantes sus atributos, colocar
-    final antes de class y no ofrecer setters
+    To create an immutable class, we need to
+    make its attributes constant, place
+    `final` before `class`, and not include setters.
 
-    Es importante recordad que las clases inmutables
-    no pueden ser extendidas, es decir, no pueden ser heredadas
+    It's important to remember that immutable classes
+    cannot be extended; that is, they cannot be inherited.
 */
 public final class House {
     private final int doors;

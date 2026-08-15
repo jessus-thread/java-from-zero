@@ -9,16 +9,15 @@ public class Main {
         System.out.println(vehicle.toString());
 
         /*
-            El polimorfismo de inclusion se basa en tipar a las clases hijas
-            como clases de la super clase
+            Inclusion polymorphism is based on typing child classes
+            as classes of the superclass
          */
         Vehicle myCar = new Car("Toyota", "Corolla", 2021, 4);
         Vehicle motorcycle = new Motorcycle("Honda", "CBR", 2021, false);
 
         /*
-            Casteamos los objetos myCar para poder usar los metodos start(),
-            no cambiamos el tipo de dato directamente en la variable ya que
-            metodologicamente es incorrecto
+            We cast the `myCar` objects to use the `start()` methods; we do not change
+            the data type directly in the variable, as that is methodologically incorrect.
          */
         ((Car)myCar).start();
         ((Motorcycle)motorcycle).start();
@@ -26,7 +25,7 @@ public class Main {
         printVehicle(myCar);
 
         /*
-            Castemos para poder acceder a los setters creados en la clase Car
+            Let's cast to access the setters created in the Car class
          */
         ((Car)myCar).setDoors(5);
 
@@ -34,29 +33,23 @@ public class Main {
     }
 
     /*
-        ¿Qué es el Polimorfismo de Inclusión?
+        What is Inclusion Polymorphism?
 
-        En la teoría de tipos, el polimorfismo de inclusión (también conocido como polimorfismo
-        de subtipado o Subtyping) es la capacidad que tiene el lenguaje para permitir que un objeto
-        de una clase hija (subtipo) pueda ser utilizado en cualquier lugar donde se espere un objeto
-        de su clase padre (supertipo).
+        In type theory, inclusion polymorphism (also known as subtyping polymorphism or simply subtyping) is a language's ability to allow an object of a child class (subtype) to be used wherever an object of its parent class (supertype) is expected.
 
-        La palabra "inclusión" viene de la teoría de conjuntos: el conjunto de las clases hijas está
-        incluido dentro del conjunto de la clase padre.
+        The word "inclusion" comes from set theory: the set of child classes is included within the set of the parent class.
 
-        Para que este polimorfismo exista, se necesitan dos cosas obligatoriamente:
-            1. Herencia (usando extends) o Implementación de Interfaces (usando implements).
-            2. Upcasting (que es cuando guardas a un hijo en una variable de tipo padre).
+        For this type of polymorphism to exist, two things are strictly required:
+        1. Inheritance (using `extends`) or Interface Implementation (using `implements`).
+        2. Upcasting (storing a child object in a variable of the parent type).
 
-        El Principio de Sustitución de Liskov (SOLID)
+        The Liskov Substitution Principle (SOLID)
 
-        En las grandes ligas de la ingeniería, a esto le llamamos por su nombre formal: El Principio
-        de Sustitución de Liskov (la letra "L" de los famosos principios SOLID de arquitectura).
+        In professional engineering circles, we call this by its formal name: the Liskov Substitution Principle (the "L" in the famous SOLID architectural principles).
 
-        Este principio dicta que: "Si S es un subtipo de T, entonces los objetos de tipo T pueden ser
-        sustituidos por objetos de tipo S sin alterar las propiedades correctas del programa".
+        This principle states: "If S is a subtype of T, then objects of type T may be replaced with objects of type S without altering the program's correctness."
 
-        En cristiano: Si tu método pide un Padre, puedes mandarle cualquier Hijo, y el programa no debe explotar.
+        In plain English: If your method requires a Parent, you can pass it any Child, and the program shouldn't crash.
      */
     public static void printVehicle(Vehicle vehicle) {
         System.out.println(vehicle.toString());

@@ -1,31 +1,31 @@
 package ExampleAbsInterfaces;
 
 /*
-    Las clases abstractas se crean para ser heredadas; es decir,
-    no se pueden instanciar directamente.
+    Abstract classes are created to be inherited; that is,
+    they cannot be instantiated directly.
 
-    Nota sobre clases anónimas: Aunque parezca que se instancian
-    al usar una clase anónima, en realidad Java crea una clase hija
-    sin nombre en tiempo de ejecución y es ESA clase hija la que se instancia.
+    Note on anonymous classes: Although it may seem like they are instantiated
+    when using an anonymous class, Java actually creates an unnamed subclass
+    at runtime and THAT subclass is what gets instantiated.
 
-    Su objetivo principal es servir como plantilla base para otras clases.
+    Their main purpose is to serve as a base template for other classes.
 
-    Las clases abstractas pueden combinar dos cosas:
-    1. Métodos abstractos (solo la firma): Obligan a las clases hijas a
-       implementar dicho comportamiento (funcionan como un contrato).
-    2. Métodos concretos (con código ejecutable): Comportamiento base
-       que todas las clases hijas heredan y pueden utilizar directamente.
+    Abstract classes can combine two things:
+    1. Abstract methods (signature only): They force child classes to
+        implement this behavior (they act as a contract).
+    2. Concrete methods (with executable code): Base behavior
+        that all child classes inherit and can use directly.
 
-    ¿Para qué sirve el constructor si la clase no se puede instanciar?
-    El constructor existe para inicializar el estado (los atributos) de
-    esta clase base. Las clases hijas tienen la responsabilidad de invocarlo
-    utilizando el método super().
+    What is the purpose of the constructor if the class cannot be instantiated?
+    The constructor exists to initialize the state (attributes) of
+    this base class. Child classes have the responsibility to invoke it
+    using the super() method.
  */
 public abstract class Vehicle {
     private String brand;
     private String model;
     private int year;
-    // De esta forma usan los enums
+    // This is how they use enums.
     private Color color;
     private VehicleStatus vehicleStatus;
 
@@ -74,11 +74,11 @@ public abstract class Vehicle {
     }
 
     /*
-        La palabra reservada 'abstract' en un método indica que no tiene
-        implementación (cuerpo de código). Funciona como las interfaces:
-        establece una regla obligatoria indicando que las clases hijas
-        deben sobrescribir e implementar este método sí o sí.
-     */
+        The 'abstract' keyword in a method indicates that it has no
+        implementation (code body). It works like interfaces:
+        it establishes a mandatory rule stating that child classes
+        must override and implement this method.
+    */
     public abstract void drive();
 
     @Override

@@ -4,24 +4,24 @@ import java.util.*;
 
 public class ListIteratorExample {
     /*
-            La interfaz ListIterator sirve para recorrer una lista en ambos sentidos,
-            hacia delante y hacia atras, modificar la lista durante la iteracion
-            sin generar excepciones
-         */
+        The ListIterator interface is used to traverse a list in both directions,
+        forwards and backwards, and to modify the list during iteration
+        without throwing exceptions.
+    */
 
     static void main() {
         /*
-            Arrays.asList genera una lista inmutable, es decir,
-            podemos actualizar los datos que estan en ella pero no podemos
-            agregar ni eliminar, por eso lo colocamos como argumento dentro
-            de ArrayList
-         */
+            Arrays.asList generates a fixed-size list; that is,
+            we can update the data within it, but we cannot
+            add or remove elements, which is why we pass it
+            as an argument to ArrayList.
+        */
         List<String> names = new ArrayList<>(Arrays.asList("Gabriel", "Angel", "Lucia", "Jessus", "Rogelio"));
 
         System.out.println(names);
 
-        addName(names, "Minerva");
-        updateName(names, "Arami", "Lucia");
+        addName(names, "Carla");
+        updateName(names, "Elizabeth", "Lucia");
         removeName(names, "Jessus");
         readNames(names);
     }
@@ -33,10 +33,10 @@ public class ListIteratorExample {
             String name = iterator.next();
 
             if(name.equals("Gabriel")) {
-                // Agrega despues de gabriel
+                // Add it after Gabriel.
                 iterator.add(newName);
 
-                // Rompemos el bucle despues de agregar
+                // We break the loop after adding.
                 break;
             }
         }
@@ -47,10 +47,10 @@ public class ListIteratorExample {
 
         while (iterator.hasNext()) {
             if(iterator.next().equals(oldName)) {
-                // Agrega despues de gabriel
+                // Add it after Gabriel.
                 iterator.set(newName);
 
-                // Rompemos el bucle despues de agregar
+                // We break the loop after adding.
                 break;
             }
         }
@@ -61,10 +61,10 @@ public class ListIteratorExample {
 
         while (iterator.hasNext()) {
             if(iterator.next().equals(nameToDelete)) {
-                // Agrega despues de gabriel
+                // Add it after Gabriel.
                 iterator.remove();
 
-                // Rompemos el bucle despues de agregar
+                // We break the loop after adding.
                 break;
             }
         }

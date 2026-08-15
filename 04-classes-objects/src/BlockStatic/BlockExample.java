@@ -31,6 +31,13 @@ public class BlockExample {
         they are loaded on demand. A class's static block executes only the first
         time you attempt to use that class (whether by instantiating it or by calling
         one of its static methods)
+
+        In the backend world, when dealing with external resources (such as databases,
+        file reading, or network connections), we generally avoid static blocks.
+
+        That is the golden rule. Static blocks (`static { }`) shine when you need to
+        perform complex initialization of static variables that is 100% safe, predictable,
+        and resides entirely in RAM (without touching the internet, databases, or files).
      */
     static {
         System.out.println("Block static execute...");
