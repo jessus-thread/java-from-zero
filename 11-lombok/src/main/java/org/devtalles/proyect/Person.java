@@ -1,31 +1,33 @@
 package org.devtalles.proyect;
 
 /*
-    Que es una anotación?
 
-   Es una etiqueta que añade información o funcionalidad
-   a nuestro código, si nos ponemos un poquito mas técnicos
-   podemos decir que es una metaetiqueta que en el código
-   agrega información o comportamiento pero sin modificar
-   la logica del programa
- */
+    What is an annotation?
+
+    It is a tag that adds information or functionality
+    to our code. If we get a bit more technical,
+    we can say it is a meta-tag that adds
+    information or behavior to the code without
+    modifying the program's logic.
+
+*/
 
 import lombok.*;
 
-// @Getter // agrega los metodos getters
-// @Setter // agrega los metodos setters
+// @Getter // Add the getter methods.
+// @Setter // Add the setter methods.
 // @ToString
 // @EqualsAndHashCode
-// @NoArgsConstructor // crea un constructor sin argumentos
-// @RequiredArgsConstructor // crea un constructor con argumentos requeridos (final)
-// @AllArgsConstructor // crea un constructor con todas las propiedades
+// @NoArgsConstructor // Create a no-argument constructor.
+// @RequiredArgsConstructor // Create a constructor with required (final) arguments.
+// @AllArgsConstructor // Create a constructor with all the properties.
 /*
-    El @Data crea un constructor, getters and setters, equals y hasCode, toString
+    El @Data create a constructor, getters and setters, equals and hashCode, toString
 */
 // @Data
-// @Value convierte esta clase en inmutable, convierte los atributos automaticamente en privados y final
+// @Value Make this class immutable, and automatically make the attributes private and final.
 /*
-    Builder es un patron de diseño que me va a permitir
+    Builder is a design pattern that will allow me to...
 */
 @Builder
 @ToString
